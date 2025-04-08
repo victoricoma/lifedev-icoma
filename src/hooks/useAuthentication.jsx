@@ -4,9 +4,9 @@ import {
     signInWithEmailAndPassword,
     updateProfile,
     signOut,
-  } from "firebase/auth";
+  } from 'firebase/auth'
   
-  import { useState, useEffect } from "react";
+  import { useState, useEffect } from "react"
   
   export const useAuthentication = () => {
     const [error, setError] = useState(null);
