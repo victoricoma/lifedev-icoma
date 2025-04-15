@@ -1,21 +1,19 @@
-import React, { use } from 'react'
-import { useState } from 'react'
 import styles from './Navbar.module.css'
 
 const Navbar = () => {
-  const [user, setUser] = useState({ name: 'Victor', idade: 42 })
-
   return (
     <>
       <nav className={styles.navbar}>
         <ul className={styles.link_list}>
-          <li>Home</li>
-          <li>Register</li>
-          <li>New Post</li>
-          <li>Dashboard</li>
-          <li>About Us</li>
+          <li><a href="#">
+            <span>Home</span>
+          </a></li>
+          <li><a href="#">Register</a></li>
+          <li><a href="#">New Post</a></li>
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">About Us</a></li>
           <li>
-            <button className={styles.logout}>Exit</button>
+            <button className={styles.exit}>Exit</button>
           </li>
         </ul>
       </nav>
