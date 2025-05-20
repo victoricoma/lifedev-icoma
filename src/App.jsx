@@ -3,7 +3,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 
 import { useState, useEffect, use } from 'react'
 
-import { AuthProvider } from './components/context/AuthContext'
+import { AuthProvider } from './context/AuthContext'
 
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -23,13 +23,13 @@ function App() {
   const loadingUser = user == undefined
 
   useEffect(() => {
-    onAuthStateChanged(auth, () => {
+    onAuthStateChanged(auth, (user) => {
       setUser(user)
     })
   }, [auth])
 
   if (loadingUser) {
-    return <p>Carregando a página ...</p>
+    return <p>Carregando . . . </p>
   }
   return (
     <>
@@ -43,14 +43,22 @@ function App() {
                   element={<Home />} />
                 <Route path="/about"
                   element={<About />} />
-                <Route path="/login"
-                  element={!user ? <Login /> : <Navigate to="/" />} />
-                <Route path="/register"
-                  element={!user ? <Register /> : <Navigate to="/" />} />
-                <Route path="/dashboard"
-                  element={user ? <Dashboard /> : <Navigate to="/login" />} />
-                <Route path="/posts/create"
-                  element={user ? <CreatePost /> : <Navigate to="/login" />} />
+                <Route 
+                path='/post/create'
+                element={user ? <CreatePost /> :<Navigate to="/login" />}
+                />
+                <Route 
+                path='/login'
+                element={!user ? <Login /> :<Navigate to="/" />}
+                />
+                <Route 
+                path='/register'
+                element={!user ? <Register /> :<Navigate to="/" />}
+                />
+                <Route 
+                path='/dashboard'
+                element={user ? <Dashboard /> :<Navigate to="/login" />}
+                />
               </Routes>
             </div>
             <Footer />
