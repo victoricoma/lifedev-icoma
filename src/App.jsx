@@ -28,7 +28,7 @@ function App() {
     })
   }, [auth])
 
-  if (loadingUser) {
+  if (!loadingUser) {
     return <p>Carregando . . . </p>
   }
   return (
