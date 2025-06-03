@@ -12,6 +12,8 @@ import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 import Dashboard from './pages/Dashboard/Dashboard'
 import CreatePost from './pages/CreatePost/CreatePost'
+import Post from './pages/Post/Post'
+import Search from './pages/Search/Search'
 import About from './pages/About/About'
 import './App.css'
 import { useAuthentication } from './hooks/useAuthentication'
@@ -20,7 +22,7 @@ function App() {
   const [user, setUser] = useState(undefined)
   const { auth } = useAuthentication()
 
-  const loadingUser = user == undefined
+  const loadingUser = user === undefined
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -28,7 +30,7 @@ function App() {
     })
   }, [auth])
 
-  if (!loadingUser) {
+  if (loadingUser) {
     return <p>Carregando . . . </p>
   }
   return (
@@ -46,6 +48,18 @@ function App() {
                 <Route 
                 path='/post/create'
                 element={user ? <CreatePost /> :<Navigate to="/login" />}
+                />
+                <Route 
+                path='/post/:id'
+                element={user ? <CreatePost /> :<Navigate to="/login" />}
+                />
+                <Route
+                path='/post/:id'
+                element={user ? <Post /> :<Navigate to="/login" />}
+                />
+                <Route
+                path='/search'
+                element={user ? <Search /> :<Navigate to="/login" />}
                 />
                 <Route 
                 path='/login'

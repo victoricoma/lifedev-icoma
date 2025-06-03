@@ -1,12 +1,12 @@
 import React from 'react'
 import styles from "./Post.module.css"
 
-import { useFetchDocumet } from "../../hooks/useFetchDocument"
+import { useFetchDocument } from "../../hooks/useFetchDocument"
 import { useParams } from 'react-router-dom'
 
 const Post = () => {
     const { id } = useParams()
-    const { document: post } = useFetchDocumet("posts", id)
+    const { document: post } = useFetchDocument("posts", id)
 
     return (
         <>
